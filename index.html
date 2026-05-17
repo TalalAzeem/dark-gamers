@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags for SEO and Character Set -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Cheats - Futuristic Cheat Code Platform</title>
+    <meta name="description" content="A next-generation platform for gamers to access cheat codes and system overrides.">
+
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS Link -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Canvas for Interactive Particles/Lighting -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Animated Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-gamepad neon-icon"></i> Gamer Cheats
+        </div>
+        <nav class="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#features">Features</a>
+            <a href="#dashboard">Dashboard</a>
+        </nav>
+        <button class="cta-btn magnetic-btn">Get Started</button>
+    </header>
+
+    <!-- Main Content Wrapper for Lenis Smooth Scrolling -->
+    <main id="smooth-wrapper">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">System <span class="neon-text">Override.</span></h1>
+                <p class="hero-subtitle">Access the ultimate database of cheat codes, exploits, and system overrides.</p>
+                <div class="hero-buttons">
+                    <button class="primary-btn glow-btn">Access Database</button>
+                    <button class="secondary-btn glass-btn">Join Syndicate</button>
+                </div>
+            </div>
+            <!-- Container for the 3D Rotating Earth -->
+            <div id="earth-container" class="earth-container"></div>
+            
+            <!-- HUD Overlays -->
+            <div class="hud hud-left">
+                <div class="hud-item">SYS.ACTIVE <span class="blink-dot"></span></div>
+                <div class="hud-item">SERVER LOAD: 24%</div>
+            </div>
+            <div class="hud hud-right">
+                <div class="hud-item">CODES INJECTED: <span id="hero-co2-counter">0</span></div>
+                <div class="hud-item">GLOBAL SYNC: OK</div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <h2 class="section-title">Core <span class="neon-text">Modules</span></h2>
+            <p class="section-description">Explore the underground tools that power Gamer Cheats — from live exploit tracking to encrypted cheat vaults.</p>
+            <div class="features-grid">
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-database"></i></div>
+                    <h3>Cheat Vault</h3>
+                    <p>Access a premium library of verified cheat codes, rapid-fire exploits, and hidden debug toggles.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-bug"></i></div>
+                    <h3>Exploit Tracker</h3>
+                    <p>Monitor live exploit feeds, patch bypass alerts, and game-breaking glitch intel in real time.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <h3>Quick Search</h3>
+                    <p>Find the exact cheat, tool, or game modifier instantly with advanced filter search and keyword matching.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Encrypted Vault</h3>
+                    <p>Keep your custom cheat profiles, patched presets, and dev configs locked behind hacker-grade encryption.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-crosshairs"></i></div>
+                    <h3>Stealth Mode</h3>
+                    <p>Run stealth-enabled cheats and bypass detection by blending into the game like a ghost.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-wave-square"></i></div>
+                    <h3>Live Hack Pulse</h3>
+                    <p>Get live updates for trending cheats, network drops, and system health from the underground grid.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>AI Cheat Bot</h3>
+                    <p>Query the terminal for auto-detected exploits, custom cheat recommendations, and instant loadout builds.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-terminal"></i></div>
+                    <h3>Terminal Console</h3>
+                    <p>Open a console-style command center to inject, verify, and control cheats like an elite hacker.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                    <h3>Patch Bypass</h3>
+                    <p>Use adaptive bypass logic to stay ahead of game updates, anti-cheat changes, and patch rollouts.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                    <h3>Performance Override</h3>
+                    <p>Optimize framerate, latency, and resource loads while cheats run, preserving speed and stability.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <h3>Latency Optimizer</h3>
+                    <p>Lower input lag and network jitter with smart packet smoothing for competitive advantage.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3>Auto Injector</h3>
+                    <p>Deploy code injections automatically on launch, with safe rollback and version control.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-user-secret"></i></div>
+                    <h3>Ghost Mode</h3>
+                    <p>Hide cheat activity from dashboards and logs with a stealth shield that masks your terminal footprint.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-lock"></i></div>
+                    <h3>Secure Backdoor</h3>
+                    <p>Maintain a hidden fallback channel to restore cheats and access even under heavy anti-cheat pressure.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-eye-slash"></i></div>
+                    <h3>Ghost Injector</h3>
+                    <p>Inject code invisibly with a stealth loader that avoids detection and minimizes system impact.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-list-check"></i></div>
+                    <h3>Command Queue</h3>
+                    <p>Queue cheat commands, schedule injections, and execute complex cheat workflows automatically.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard-section">
+            <h2 class="section-title">Live <span class="neon-text">Telemetry</span></h2>
+            <div class="dashboard-grid">
+                <!-- Main Chart Area -->
+                <div class="glass-card chart-container">
+                    <h3>Cheat Activation Trends</h3>
+                    <canvas id="impactChart"></canvas>
+                </div>
+                <div class="dashboard-panel">
+                    <div class="glass-card stats-container">
+                        <h3>Performance Metrics</h3>
+                        <div class="metrics-panel">
+                            <div class="metric-card">
+                                <span>Active Cheat Sessions</span>
+                                <strong>7,482</strong>
+                            </div>
+                            <div class="metric-card">
+                                <span>Network Stability</span>
+                                <strong>98.7%</strong>
+                            </div>
+                            <div class="metric-card">
+                                <span>Exploit Alerts</span>
+                                <strong>12 Live</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card cheat-feed">
+                        <h3>Live Cheat Stream</h3>
+                        <ul>
+                            <li>ACCESS_GRANTED → 0x4F2A</li>
+                            <li>NOCLIP activated in Halo</li>
+                            <li>GODMODE patched on latest build</li>
+                            <li>AIMBOT.exe deployed in Valorant</li>
+                            <li>LEVELUP sequence queued</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-gamepad neon-icon"></i> Gamer Cheats
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2035 Gamer Cheats Syndicate. All systems operational.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Floating AI Assistant Button -->
+    <button class="ai-assistant-btn pulse-glow">
+        <i class="fa-solid fa-robot"></i>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <h3><i class="fa-solid fa-robot"></i> System Override Bot</h3>
+            <button class="close-chat" id="closeChat"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <p>Initializing connection...</p>
+                <p>Connection established. What game do you need cheat codes for?</p>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Enter game name (e.g. GTA)...">
+            <button id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- CDN Dependencies for Animations and Charts -->
+    <!-- Lenis Smooth Scrolling -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    
+    <!-- Three.js for 3D Graphics (Earth) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP for Advanced Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Chart.js for Dashboard Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom JavaScript Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
