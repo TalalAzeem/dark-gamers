@@ -1,0 +1,937 @@
+{
+  "version": "0.1",
+  "flow": "give-specific-cheat.flow.json",
+  "startNode": "entry",
+  "nodes": [
+    {
+      "id": "entry",
+      "name": "entry",
+      "type": "standard",
+      "onEnter": [],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "user.gameName.toLowerCase().includes('gta') && (user.gameName.toLowerCase().includes('v') || user.gameName.toLowerCase().includes('5'))",
+          "node": "specific-gta5"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('minecraft')",
+          "node": "specific-minecraft"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('red dead') || user.gameName.toLowerCase().includes('rdr')",
+          "node": "specific-rdr2"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('sims')",
+          "node": "specific-sims4"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('cyberpunk')",
+          "node": "specific-cyberpunk"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('ark')",
+          "node": "specific-ark"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('payday')",
+          "node": "specific-payday"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('san andreas') || (user.gameName.toLowerCase().includes('gta') && user.gameName.toLowerCase().includes('sa'))",
+          "node": "specific-gtasa"
+        },
+        {
+          "condition": "true",
+          "node": "generic-lookup"
+        }
+      ]
+    },
+    {
+      "id": "specific-gta5",
+      "name": "specific-gta5",
+      "type": "standard",
+      "onEnter": [],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "user.cheatRequest.includes('health') || user.cheatRequest.includes('god') || user.cheatRequest.includes('invincible')",
+          "node": "gta5-health"
+        },
+        {
+          "condition": "user.cheatRequest.includes('weapon') || user.cheatRequest.includes('gun') || user.cheatRequest.includes('ammo') || user.cheatRequest.includes('arm')",
+          "node": "gta5-weapons"
+        },
+        {
+          "condition": "user.cheatRequest.includes('car') || user.cheatRequest.includes('vehicle') || user.cheatRequest.includes('helicopter') || user.cheatRequest.includes('jet') || user.cheatRequest.includes('bike') || user.cheatRequest.includes('spawn')",
+          "node": "gta5-vehicles"
+        },
+        {
+          "condition": "user.cheatRequest.includes('wanted') || user.cheatRequest.includes('police') || user.cheatRequest.includes('star')",
+          "node": "gta5-wanted"
+        },
+        {
+          "condition": "user.cheatRequest.includes('money') || user.cheatRequest.includes('cash')",
+          "node": "gta5-money"
+        },
+        {
+          "condition": "user.cheatRequest.includes('run') || user.cheatRequest.includes('speed') || user.cheatRequest.includes('fast') || user.cheatRequest.includes('jump') || user.cheatRequest.includes('super')",
+          "node": "gta5-movement"
+        },
+        {
+          "condition": "true",
+          "node": "gta5-suggest"
+        }
+      ]
+    },
+    {
+      "id": "gta5-health",
+      "name": "gta5-health",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💊 **GTA V – Invincibility / Health Cheat:**\\n\\n• **PC:** TURTLE\\n• **PS4/5:** Circle, LB, Circle, Circle, LB, Circle, Circle, Circle, LB, L1, L2, L1\\n• **Xbox:** B, LB, Y, RT, A, X, B, Right, X, LB, LB, LB\\n\\n⏱️ Note: The cheat lasts 5 minutes. Just re-enter it to refresh!\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "gta5-weapons",
+      "name": "gta5-weapons",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🔫 **GTA V – All Weapons Cheat:**\\n\\n• **PC:** TOOLUP\\n• **PS4/5:** Triangle, R2, Left, L1, X, Right, Triangle, Down, Square, L1, L1, L1\\n• **Xbox:** Y, RT, Left, LB, A, Right, Y, Down, X, LB, LB, LB\\n\\n💥 **Explosive Ammo:**\\n• PC: HIGHEX\\n• PS4/5: Right, Square, X, Left, R1, R2, Left, Right, Right, L1, L1, L1\\n\\n🔥 **Explosive Melee:**\\n• PC: HOTHANDS\\n• PS4/5: Right, Left, X, Triangle, R1, O, O, O, L2\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "gta5-vehicles",
+      "name": "gta5-vehicles",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🚗 **GTA V – Vehicle Spawn Cheats:**\\n\\n• **BMX Bike** – PC: BANDIT\\n• **Buzzard Helicopter** – PC: BUZZOFF\\n• **Comet Sports Car** – PC: COMET\\n• **Rapid GT** – PC: RAPIDGT\\n• **PCJ-600 Bike** – PC: ROCKET\\n• **Sanchez Dirt Bike** – PC: OFFROAD\\n• **Duster Plane** – PC: FLYSPRAY\\n• **Stunt Plane** – PC: BARNSTORM\\n• **Caddy (Golf Cart)** – PC: HOLEIN1\\n• **Trashmaster** – PC: TRASHED\\n\\n*For PS/Xbox button combos, ask for 'all cheats' to see the full list!*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "gta5-wanted",
+      "name": "gta5-wanted",
+      "type": "standard",
+      "onEnter": [
+        "say(\"⭐ **GTA V – Wanted Level Cheats:**\\n\\n• **Lower Wanted Level:**\\n  PC: LAWYERUP\\n  PS4/5: R1, R1, Circle, R2, Right, Left, Right, Left, Right, Left\\n  Xbox: RB, RB, B, RT, Right, Left, Right, Left, Right, Left\\n\\n• **Raise Wanted Level:**\\n  PC: FUGITIVE\\n  PS4/5: R1, R1, Circle, R2, Left, Right, Left, Right, Left, Right\\n  Xbox: RB, RB, B, RT, Left, Right, Left, Right, Left, Right\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "gta5-money",
+      "name": "gta5-money",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💰 **GTA V – Money Cheats:**\\n\\n⚠️ *There is NO money cheat in GTA V for single-player!* Rockstar never added one.\\n\\nBest legit alternatives:\\n• Do Lester Assassination missions with stock market investing\\n• Rob armored trucks (show on radar as 2 blue dots)\\n• Complete heists\\n\\n*For GTA Online, money cheats don't exist either — but shark cards or modded lobbies are options (at your own risk).*\\n\\nWant cheats for **health**, **weapons**, or **vehicles** instead? 😊\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "gta5-movement",
+      "name": "gta5-movement",
+      "type": "standard",
+      "onEnter": [
+        "say(\"⚡ **GTA V – Movement Cheats:**\\n\\n• **Fast Run:**\\n  PC: CATCHME\\n  PS4/5: Triangle, Left, Right, Right, L2, L1, Square\\n  Xbox: Y, Left, Right, Right, LT, LB, X\\n\\n• **Super Jump:**\\n  PC: HOPTOIT\\n  PS4/5: Left, Left, Triangle, Triangle, Right, Right, Left, Right, Square, R1, R2\\n  Xbox: Left, Left, Y, Y, Right, Right, Left, Right, X, RB, RT\\n\\n• **Moon Gravity:**\\n  PC: FLOATER\\n  PS4/5: Left, Left, L1, R1, L1, Right, Left, L1, Left\\n  Xbox: Left, Left, LB, RB, LB, Right, Left, LB, Left\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "gta5-suggest",
+      "name": "gta5-suggest",
+      "type": "standard",
+      "onEnter": [
+        "say(`Hmm, I couldn't find a specific '${user.cheatRequest}' cheat for GTA V. Here are the categories I know:\\n\\n• 💊 **health** / invincibility\\n• 🔫 **weapons** / ammo\\n• 🚗 **vehicles** / cars / bikes\\n• ⭐ **wanted** level\\n• 💰 **money** (spoiler: doesn't exist!)\\n• ⚡ **run** / jump / movement\\n\\nOr type **'all cheats'** to see everything at once!`)"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "specific-minecraft",
+      "name": "specific-minecraft",
+      "type": "standard",
+      "onEnter": [],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "user.cheatRequest.includes('money') || user.cheatRequest.includes('item') || user.cheatRequest.includes('give') || user.cheatRequest.includes('diamond') || user.cheatRequest.includes('stuff')",
+          "node": "mc-items"
+        },
+        {
+          "condition": "user.cheatRequest.includes('teleport') || user.cheatRequest.includes('tp') || user.cheatRequest.includes('location')",
+          "node": "mc-teleport"
+        },
+        {
+          "condition": "user.cheatRequest.includes('god') || user.cheatRequest.includes('health') || user.cheatRequest.includes('invincible') || user.cheatRequest.includes('creative')",
+          "node": "mc-god"
+        },
+        {
+          "condition": "user.cheatRequest.includes('time') || user.cheatRequest.includes('weather') || user.cheatRequest.includes('day') || user.cheatRequest.includes('night')",
+          "node": "mc-world"
+        },
+        {
+          "condition": "true",
+          "node": "mc-general"
+        }
+      ]
+    },
+    {
+      "id": "mc-items",
+      "name": "mc-items",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💎 **Minecraft – Item / Give Commands:**\\n\\n• /give @s diamond 64 – 64 Diamonds\\n• /give @s netherite_ingot 64 – Netherite\\n• /give @s enchanted_golden_apple 64 – God Apples\\n• /give @s diamond_sword – Diamond Sword\\n• /give @s diamond_pickaxe – Diamond Pickaxe\\n• /give @s elytra – Elytra (flying wings)\\n\\n*Replace @s with a player name to give to them!*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "mc-teleport",
+      "name": "mc-teleport",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🌍 **Minecraft – Teleport Commands:**\\n\\n• /tp [x] [y] [z] – Teleport to exact coordinates\\n• /tp @s @p – Teleport to nearest player\\n• /tp [player1] [player2] – Teleport player1 to player2\\n• /teleport ~ ~10 ~ – Teleport 10 blocks upward\\n\\n*Tip: Press F3 to see your current coordinates!*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "mc-god",
+      "name": "mc-god",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💊 **Minecraft – God Mode / Health:**\\n\\n• /gamemode creative – No damage + fly + infinite resources\\n• /effect give @s minecraft:regeneration 9999 255 – Infinite healing\\n• /effect give @s minecraft:resistance 9999 255 – High damage resistance\\n• /effect give @s minecraft:fire_resistance 9999 255 – Fire immunity\\n• /effect give @s minecraft:absorption 9999 255 – Extra hearts\\n\\nOr just type **/gamemode creative** for full god mode! 😄\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "mc-world",
+      "name": "mc-world",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🌤️ **Minecraft – Time & Weather Commands:**\\n\\n• /time set day – Set to daytime\\n• /time set night – Set to night\\n• /time set noon – Midday\\n• /time set midnight – Midnight\\n• /gamerule doDaylightCycle false – Freeze time\\n• /weather clear – Clear weather\\n• /weather rain – Raining\\n• /weather thunder – Thunderstorm\\n• /gamerule doWeatherCycle false – Freeze weather\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "mc-general",
+      "name": "mc-general",
+      "type": "standard",
+      "onEnter": [
+        "say(`I couldn't find a specific Minecraft cheat for '${user.cheatRequest}', but here's what I can help with:\\n\\n• 💎 **items** / give / diamonds\\n• 🌍 **teleport** / tp\\n• 💊 **god** / health / creative\\n• 🌤️ **time** / weather / day / night\\n\\nOr type **'all cheats'** for the full Minecraft command list!`)"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "specific-rdr2",
+      "name": "specific-rdr2",
+      "type": "standard",
+      "onEnter": [],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "user.cheatRequest.includes('money') || user.cheatRequest.includes('cash') || user.cheatRequest.includes('dollar')",
+          "node": "rdr2-money"
+        },
+        {
+          "condition": "user.cheatRequest.includes('weapon') || user.cheatRequest.includes('gun') || user.cheatRequest.includes('ammo')",
+          "node": "rdr2-weapons"
+        },
+        {
+          "condition": "user.cheatRequest.includes('health') || user.cheatRequest.includes('dead eye') || user.cheatRequest.includes('stamina')",
+          "node": "rdr2-health"
+        },
+        {
+          "condition": "user.cheatRequest.includes('horse') || user.cheatRequest.includes('wagon') || user.cheatRequest.includes('vehicle')",
+          "node": "rdr2-horse"
+        },
+        {
+          "condition": "true",
+          "node": "rdr2-general"
+        }
+      ]
+    },
+    {
+      "id": "rdr2-money",
+      "name": "rdr2-money",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💰 **RDR2 – Money Cheat:**\\n\\nPhrase: **GREED IS NOW A VIRTUE**\\n\\n*(Press Triangle/Y > Settings > Cheats, enter the phrase above)*\\n\\nAdds $500 to your wallet. You can re-enter it multiple times! 💵\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "rdr2-weapons",
+      "name": "rdr2-weapons",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🔫 **RDR2 – Weapon Cheats:**\\n\\n• **All Weapons:** A SIMPLE LIFE, A BEAUTIFUL DEATH\\n• **Heavy Weapons:** GREED IS AMERICAN VIRTUE\\n• **Infinite Ammo:** ABUNDANCE IS THE DULLEST DESIRE\\n• **All Melee:** History Is Written By Fools\\n\\n*(Enter phrases in Settings > Cheats)*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "rdr2-health",
+      "name": "rdr2-health",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💊 **RDR2 – Health / Stats Cheats:**\\n\\n• **Full Health, Stamina & Dead Eye:** YOU FLOURISH BEFORE YOU DIE\\n• **Restore Health Only:** I SHALL BE BETTER\\n• **Refill Dead Eye:** FOCUS\\n• **Eagle Eye Always On:** SEEK SEEK LEST\\n\\n*(Enter phrases in Settings > Cheats)*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "rdr2-horse",
+      "name": "rdr2-horse",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🐴 **RDR2 – Horse / Vehicle Cheats:**\\n\\n• **Summon Your Horse:** BETTER THAN MY DOG\\n• **Superior Horse:** RUN! RUN! RUN!\\n• **Spawn Wagon:** KEEP YOUR DREAMS SIMPLE\\n\\n*(Enter phrases in Settings > Cheats)*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "rdr2-general",
+      "name": "rdr2-general",
+      "type": "standard",
+      "onEnter": [
+        "say(`I couldn't find a specific RDR2 cheat for '${user.cheatRequest}'. Here are the categories I know:\\n\\n• 💰 **money** / cash\\n• 🔫 **weapons** / guns / ammo\\n• 💊 **health** / dead eye / stamina\\n• 🐴 **horse** / wagon\\n\\nOr type **'all cheats'** for the complete RDR2 list!`)"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "specific-sims4",
+      "name": "specific-sims4",
+      "type": "standard",
+      "onEnter": [],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "user.cheatRequest.includes('money') || user.cheatRequest.includes('cash') || user.cheatRequest.includes('simoleon') || user.cheatRequest.includes('fund')",
+          "node": "sims4-money"
+        },
+        {
+          "condition": "user.cheatRequest.includes('skill') || user.cheatRequest.includes('level up') || user.cheatRequest.includes('cooking') || user.cheatRequest.includes('fitness')",
+          "node": "sims4-skills"
+        },
+        {
+          "condition": "user.cheatRequest.includes('need') || user.cheatRequest.includes('hunger') || user.cheatRequest.includes('energy') || user.cheatRequest.includes('mood')",
+          "node": "sims4-needs"
+        },
+        {
+          "condition": "user.cheatRequest.includes('build') || user.cheatRequest.includes('place') || user.cheatRequest.includes('free') || user.cheatRequest.includes('house')",
+          "node": "sims4-build"
+        },
+        {
+          "condition": "true",
+          "node": "sims4-general"
+        }
+      ]
+    },
+    {
+      "id": "sims4-money",
+      "name": "sims4-money",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💰 **The Sims 4 – Money Cheats:**\\n*(Open console: Ctrl+Shift+C)*\\n\\n• **motherlode** – +§50,000 Simoleons\\n• **kaching** (or **rosebud**) – +§1,000\\n• **Money 9999999** – Set exact amount (e.g. 9 million)\\n• **FreeRealEstate on** – Buy any house for FREE\\n\\nTip: You can spam **motherlode** as many times as you want! 💸\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "sims4-skills",
+      "name": "sims4-skills",
+      "type": "standard",
+      "onEnter": [
+        "say(\"📚 **The Sims 4 – Skill Cheats:**\\n*(First type: testingcheats true)*\\n\\n• stats.set_skill_level Major_Cooking 10\\n• stats.set_skill_level Major_Painting 10\\n• stats.set_skill_level Major_Writing 10\\n• stats.set_skill_level Major_Logic 10\\n• stats.set_skill_level Major_Charisma 10\\n• stats.set_skill_level Major_Programming 10\\n• stats.set_skill_level Major_VideoGaming 10\\n• stats.set_skill_level Skill_Fitness 10\\n• stats.set_skill_level Major_Piano 10\\n• stats.set_skill_level Major_Guitar 10\\n\\nReplace the name after **Major_** with any skill. Max level is 10!\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "sims4-needs",
+      "name": "sims4-needs",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💊 **The Sims 4 – Needs Cheats:**\\n*(First type: testingcheats true)*\\n\\n• sims.fill_all_commodities – Fill ALL needs at once\\n• fillmotive motive_Hunger – Fill hunger\\n• fillmotive motive_Energy – Fill energy\\n• fillmotive motive_Fun – Fill fun\\n• fillmotive motive_Social – Fill social\\n• fillmotive motive_Bladder – Fill bladder\\n• fillmotive motive_Hygiene – Fill hygiene\\n\\nOr just Shift+Click your Sim and select **'Cheat Need > Make Happy'** for instant happiness! 😄\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "sims4-build",
+      "name": "sims4-build",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🏗️ **The Sims 4 – Build Mode Cheats:**\\n\\n• **bb.moveobjects on** – Place objects anywhere\\n• **bb.enablefreebuild** – Build on any lot (including community lots)\\n• **bb.showhiddenobjects** – Unlock debug/hidden items (search 'debug')\\n• **bb.showliveeditobjects** – Even more hidden world objects\\n• **bb.ignoregameplayunlocksentitlement** – All career reward items unlocked\\n• **FreeRealEstate on** – Free house purchases\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "sims4-general",
+      "name": "sims4-general",
+      "type": "standard",
+      "onEnter": [
+        "say(`I couldn't find a specific Sims 4 cheat for '${user.cheatRequest}'. Here's what I know:\\n\\n• 💰 **money** / simoleons / free house\\n• 📚 **skills** / level up / cooking\\n• 💊 **needs** / hunger / energy / mood\\n• 🏗️ **build** / place objects\\n\\nOr type **'all cheats'** for the full Sims 4 list!`)"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "specific-cyberpunk",
+      "name": "specific-cyberpunk",
+      "type": "standard",
+      "onEnter": [],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "user.cheatRequest.includes('money') || user.cheatRequest.includes('eddie') || user.cheatRequest.includes('currency')",
+          "node": "cyberpunk-money"
+        },
+        {
+          "condition": "user.cheatRequest.includes('weapon') || user.cheatRequest.includes('gun') || user.cheatRequest.includes('ammo')",
+          "node": "cyberpunk-weapons"
+        },
+        {
+          "condition": "user.cheatRequest.includes('item') || user.cheatRequest.includes('inventory') || user.cheatRequest.includes('add')",
+          "node": "cyberpunk-items"
+        },
+        {
+          "condition": "user.cheatRequest.includes('mod') || user.cheatRequest.includes('cheat engine') || user.cheatRequest.includes('console')",
+          "node": "cyberpunk-mods"
+        },
+        {
+          "condition": "true",
+          "node": "cyberpunk-general"
+        }
+      ]
+    },
+    {
+      "id": "specific-ark",
+      "name": "specific-ark",
+      "type": "standard",
+      "onEnter": [],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "user.cheatRequest.includes('god') || user.cheatRequest.includes('invincible') || user.cheatRequest.includes('damage')",
+          "node": "ark-god"
+        },
+        {
+          "condition": "user.cheatRequest.includes('dino') || user.cheatRequest.includes('tame') || user.cheatRequest.includes('summon')",
+          "node": "ark-dinos"
+        },
+        {
+          "condition": "user.cheatRequest.includes('item') || user.cheatRequest.includes('resources') || user.cheatRequest.includes('give')",
+          "node": "ark-items"
+        },
+        {
+          "condition": "user.cheatRequest.includes('weather') || user.cheatRequest.includes('world') || user.cheatRequest.includes('performance')",
+          "node": "ark-world"
+        },
+        {
+          "condition": "true",
+          "node": "ark-general"
+        }
+      ]
+    },
+    {
+      "id": "specific-payday",
+      "name": "specific-payday",
+      "type": "standard",
+      "onEnter": [],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "user.cheatRequest.includes('health') || user.cheatRequest.includes('armor') || user.cheatRequest.includes('god')",
+          "node": "payday-health"
+        },
+        {
+          "condition": "user.cheatRequest.includes('ammo') || user.cheatRequest.includes('weapon') || user.cheatRequest.includes('infinite')",
+          "node": "payday-ammo"
+        },
+        {
+          "condition": "user.cheatRequest.includes('skill') || user.cheatRequest.includes('points') || user.cheatRequest.includes('tree')",
+          "node": "payday-skill"
+        },
+        {
+          "condition": "user.cheatRequest.includes('money') || user.cheatRequest.includes('cash') || user.cheatRequest.includes('bank')",
+          "node": "payday-money"
+        },
+        {
+          "condition": "true",
+          "node": "payday-general"
+        }
+      ]
+    },
+    {
+      "id": "cyberpunk-money",
+      "name": "cyberpunk-money",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💰 Cyberpunk 2077 – Money Cheat:\n\n• PC console/mod approach: Game.AddToInventory('Items.money', 99999) – Add 99,999 eddies\n\n*This works with Cyber Engine Tweaks or a modded script environment.*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cyberpunk-weapons",
+      "name": "cyberpunk-weapons",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🔫 Cyberpunk 2077 – Weapon & Gear Cheats:\n\n• Game.AddToInventory('Items.Preset_Achilles_Default') – Add Achilles\n• Game.AddToInventory('Items.Preset_Nova_Default') – Add Nova\n• Game.AddToInventory('Items.Preset_Lexington_Default') – Add Malorian\n\n*Use these in a mod console or script environment for PC.*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cyberpunk-items",
+      "name": "cyberpunk-items",
+      "type": "standard",
+      "onEnter": [
+        "say(\"📦 Cyberpunk 2077 – Item Cheats:\n\n• Game.AddToInventory('Items.HealthInhaler', 50) – Add MaxDocs\n• Game.AddToInventory('Items.Preset_Dex_Defender') – Add Dex's gun\n• Game.AddToInventory('Items.Preset_Valkyrie_Default') – Add heavy weapon\n\n*Use a console mod to spawn gear and consumables quickly.*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cyberpunk-mods",
+      "name": "cyberpunk-mods",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🛠️ Cyberpunk 2077 – Mod / Console Tips:\n\n• Native console cheats are not available in retail builds.\n• Use Cyber Engine Tweaks / mods for PC to run script commands.\n• Back up your save before editing inventory or stats.\n• Common mod commands include AddToInventory and stat changes.\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cyberpunk-general",
+      "name": "cyberpunk-general",
+      "type": "standard",
+      "onEnter": [
+        "say(\"I couldn't find a direct Cyberpunk 2077 cheat for '${user.cheatRequest}'. Use these categories instead:\n\n• 💰 money / eddies\n• 🔫 weapons / gear\n• 📦 items / inventory\n• 🛠️ mods / console\n\nOr ask for 'all cheats' to see the full Cyberpunk list.\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "ark-god",
+      "name": "ark-god",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💊 ARK – God / Player Cheats:\n\n• god – Enable God mode (no damage)\n• fly – Enable flying\n• walk – Disable flying\n• ghost – No clip, move through objects\n• infinitestats – Infinite health/stamina/food/water\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "ark-dinos",
+      "name": "ark-dinos",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🦖 ARK – Dino & Tame Cheats:\n\n• gmsummon '[DinoName]_Character_BP_C' [level] – Spawn a tame dino\n• summon [dino classname] – Spawn a wild creature\n• forcetame – Instantly tame the targeted dinosaur\n• cheat destroywilddinos – Kill all wild dinos\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "ark-items",
+      "name": "ark-items",
+      "type": "standard",
+      "onEnter": [
+        "say(\"📦 ARK – Item Cheats:\n\n• giveitemnum [id] [qty] [quality] 0 – Spawn item by ID\n• giveallstructure – Get all structure blueprints\n• givecolors [qty] – Get all dyes\n• GiveResources – Add resources quickly\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "ark-world",
+      "name": "ark-world",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🌍 ARK – World & Performance Commands:\n\n• settimeofday [time] – Change the time of day\n• setweather [weather] – Change weather\n• r.shadowquality 0 – Improve performance\n• cheat saveworld – Save the current world state\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "ark-general",
+      "name": "ark-general",
+      "type": "standard",
+      "onEnter": [
+        "say(\"I couldn't find a specific ARK cheat for '${user.cheatRequest}'. Here are the categories I can help with:\n\n• 💊 god / invincible / damage\n• 🦕 dinos / tame / summon\n• 📦 items / resources\n• 🌍 weather / world / performance\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "payday-health",
+      "name": "payday-health",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💉 Payday 2 – Health / Armor Cheats:\n\n• Use Cheat Engine or trainer tools to freeze player HP.\n• Set armor value to max in process memory.\n• Enable god mode via offline trainer for invincibility.\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "payday-ammo",
+      "name": "payday-ammo",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🔫 Payday 2 – Ammo & Weapons Cheats:\n\n• Freeze current ammo count in memory for infinite bullets.\n• Use trainer values to set unlimited throwables.\n• Enable infinite reload or no-reload via mod tools.\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "payday-skill",
+      "name": "payday-skill",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🎯 Payday 2 – Skill / XP Cheats:\n\n• Use Cheat Engine to increase your skill points value.\n• Unlock skill tree points by setting the skill points variable.\n• Use offline trainers to get max skills instantly.\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "payday-money",
+      "name": "payday-money",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💰 Payday 2 – Cash Cheats:\n\n• Use trainer or memory editor to set your cash value to the max.\n• Freeze the cash variable in process memory to prevent loss.\n• Best used in offline / solo mode to avoid bans.\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "payday-general",
+      "name": "payday-general",
+      "type": "standard",
+      "onEnter": [
+        "say(\"I couldn't find a specific Payday 2 cheat for '${user.cheatRequest}'. Here are common categories:\n\n• 💉 health / armor\n• 🔫 ammo / weapons\n• 🎯 skill / points\n• 💰 money / cash\n\nUse offline trainers or Cheat Engine for best results.\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "specific-gtasa",
+      "name": "specific-gtasa",
+      "type": "standard",
+      "onEnter": [],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "user.cheatRequest.includes('health') || user.cheatRequest.includes('god') || user.cheatRequest.includes('armor')",
+          "node": "gtasa-health"
+        },
+        {
+          "condition": "user.cheatRequest.includes('money') || user.cheatRequest.includes('cash')",
+          "node": "gtasa-money"
+        },
+        {
+          "condition": "user.cheatRequest.includes('weapon') || user.cheatRequest.includes('gun') || user.cheatRequest.includes('ammo')",
+          "node": "gtasa-weapons"
+        },
+        {
+          "condition": "user.cheatRequest.includes('wanted') || user.cheatRequest.includes('police')",
+          "node": "gtasa-wanted"
+        },
+        {
+          "condition": "true",
+          "node": "gtasa-general"
+        }
+      ]
+    },
+    {
+      "id": "gtasa-health",
+      "name": "gtasa-health",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💊 **GTA San Andreas – Health & God Mode:**\\n\\n• **HESOYAM** – Full Health + Full Armor + $250,000\\n• **BAGUVIX** – Infinite Health (can't die)\\n• **FULLCLIP** – Infinite Ammo (no reload)\\n• **AEZAKMI** – Never Wanted (police ignore you)\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "gtasa-money",
+      "name": "gtasa-money",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💰 **GTA San Andreas – Money Cheat:**\\n\\n• **HESOYAM** – Adds $250,000 + Full Health + Full Armor\\n\\n*You can repeat this as many times as you want to stack money!* 💸\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "gtasa-weapons",
+      "name": "gtasa-weapons",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🔫 **GTA San Andreas – Weapon Cheats:**\\n\\n• **LXGIWYL** – Weapon Set 1 (Desert Eagle, Shotgun, Micro SMG, Rocket Launcher, etc.)\\n• **PROFESSIONALSKIT** – Weapon Set 2 (Pistol, Sawnoff Shotgun, TEC-9, Rifle, etc.)\\n• **UZUMYMW** – Weapon Set 3 (Silenced Pistol, Combat Shotgun, MP5, M4, Minigun, etc.)\\n• **FULLCLIP** – Infinite Ammo for all weapons\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "gtasa-wanted",
+      "name": "gtasa-wanted",
+      "type": "standard",
+      "onEnter": [
+        "say(\"⭐ **GTA San Andreas – Wanted Level:**\\n\\n• **AEZAKMI** – Never Wanted (police never chase you)\\n• **TURNDOWNTHEHEAT** – Remove current wanted level\\n• **TURNUPTHEHEAT** – Get 6-Star Wanted Level\\n• **BRINGITON** – Max 6-Star Wanted Level instantly\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "gtasa-general",
+      "name": "gtasa-general",
+      "type": "standard",
+      "onEnter": [
+        "say(`Couldn't find a specific GTA San Andreas cheat for '${user.cheatRequest}'. Here's what I can do:\\n\\n• 💊 **health** / god / armor\\n• 💰 **money** / cash\\n• 🔫 **weapons** / guns / ammo\\n• ⭐ **wanted** / police\\n\\nOr type **'all cheats'** for everything!`)"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "generic-lookup",
+      "name": "generic-lookup",
+      "type": "standard",
+      "onEnter": [
+        "say(`🔍 Looking up **'${user.cheatRequest}'** for **${user.gameName}**...\\n\\nI don't have a built-in cheat list for this game yet, but here's how to find it:\\n\\n🌐 **Best cheat sites:**\\n• **IGN Cheats:** ign.com/wikis\\n• **GamesRadar:** gamesradar.com/cheats\\n• **CheatCC:** cheatcc.com\\n• **GameFAQs:** gamefaqs.gamespot.com\\n\\n💡 **Tip:** Search for:\\n*\"${user.gameName} ${user.cheatRequest} cheat PC\"* (or PS4/Xbox)\\n\\nWant to try a different game I support? (GTA V, Minecraft, RDR2, Sims 4, GTA San Andreas, Cyberpunk 2077, ARK)`)"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    }
+  ]
+}

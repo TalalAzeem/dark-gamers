@@ -1,0 +1,161 @@
+{
+  "version": "0.1",
+  "flow": "main.flow.json",
+  "startNode": "entry",
+  "catchAll": {
+    "next": [
+      {
+        "condition": "true",
+        "node": "fallback"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "entry",
+      "name": "entry",
+      "type": "standard",
+      "onEnter": [
+        "say(\"👾 Welcome to the **Game Cheat Bot**! I know cheats for hundreds of games.\")",
+        "say(\"🎮 What game are you looking for cheats for? (e.g. GTA V, Minecraft, The Sims 4, Red Dead Redemption 2, etc.)\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "capture-game-name"
+        }
+      ]
+    },
+    {
+      "id": "capture-game-name",
+      "name": "capture-game-name",
+      "type": "standard",
+      "onEnter": [],
+      "onReceive": [
+        "temp.gameName = event.preview",
+        "user.gameName = temp.gameName"
+      ],
+      "next": [
+        {
+          "condition": "true",
+          "node": "ask-cheat-type"
+        }
+      ]
+    },
+    {
+      "id": "ask-cheat-type",
+      "name": "ask-cheat-type",
+      "type": "standard",
+      "onEnter": [
+        "say(`Great! I'll find cheats for **${user.gameName}** 🎮`)",
+        "say(\"What would you like to know? You can ask me:\n\n• A **specific cheat** (e.g. *infinite health*, *unlimited money*, *all weapons*)\n• **All cheats** – just type *'all cheats'* or *'give me everything'*\n• A **cheat category** (e.g. *weapons*, *vehicles*, *skills*, *money*)\n\nWhat cheat are you looking for?\")"
+      ],
+      "onReceive": [
+        "temp.cheatRequest = event.preview.toLowerCase()",
+        "user.cheatRequest = temp.cheatRequest"
+      ],
+      "next": [
+        {
+          "condition": "includes(temp.cheatRequest, 'all') || includes(temp.cheatRequest, 'everything') || includes(temp.cheatRequest, 'full list') || includes(temp.cheatRequest, 'every cheat')",
+          "node": "give-all-cheats"
+        },
+        {
+          "condition": "true",
+          "node": "give-specific-cheat"
+        }
+      ]
+    },
+    {
+      "id": "give-all-cheats",
+      "name": "give-all-cheats",
+      "type": "skill-call",
+      "flow": "give-all-cheats.flow.json",
+      "next": [
+        {
+          "condition": "true",
+          "node": "ask-more"
+        }
+      ]
+    },
+    {
+      "id": "give-specific-cheat",
+      "name": "give-specific-cheat",
+      "type": "skill-call",
+      "flow": "give-specific-cheat.flow.json",
+      "next": [
+        {
+          "condition": "true",
+          "node": "ask-more"
+        }
+      ]
+    },
+    {
+      "id": "ask-more",
+      "name": "ask-more",
+      "type": "standard",
+      "onEnter": [
+        "say(\"Do you want to look up cheats for another game, or do you need more cheats for **\" + user.gameName + \"**?\\n\\n• Type **'same game'** or **'more cheats'** to keep browsing this game\\n• Type **'new game'** or a new game name to switch games\\n• Type **'done'** or **'exit'** to finish\")"
+      ],
+      "onReceive": [
+        "temp.moreRequest = event.preview.toLowerCase()"
+      ],
+      "next": [
+        {
+          "condition": "includes(temp.moreRequest, 'done') || includes(temp.moreRequest, 'exit') || includes(temp.moreRequest, 'bye') || includes(temp.moreRequest, 'thanks') || includes(temp.moreRequest, 'thank you') || includes(temp.moreRequest, 'no')",
+          "node": "goodbye"
+        },
+        {
+          "condition": "includes(temp.moreRequest, 'same') || includes(temp.moreRequest, 'more')",
+          "node": "ask-cheat-type"
+        },
+        {
+          "condition": "true",
+          "node": "new-game"
+        }
+      ]
+    },
+    {
+      "id": "new-game",
+      "name": "new-game",
+      "type": "standard",
+      "onEnter": [
+        "user.gameName = event.preview",
+        "say(`Got it! Switching to **${user.gameName}** 🎮`)"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "ask-cheat-type"
+        }
+      ]
+    },
+    {
+      "id": "goodbye",
+      "name": "goodbye",
+      "type": "standard",
+      "onEnter": [
+        "say(\"Thanks for using the Game Cheat Bot! 🎮 Happy gaming and happy cheating! 😄\\nCome back anytime you need more cheats!\")"
+      ],
+      "onReceive": null,
+      "next": []
+    },
+    {
+      "id": "fallback",
+      "name": "fallback",
+      "type": "standard",
+      "onEnter": [
+        "say(\"Hmm, I didn't quite get that. Let me help you find cheats! 🎮\")",
+        "say(\"Which **game** are you looking for cheats for?\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "capture-game-name"
+        }
+      ]
+    }
+  ]
+}

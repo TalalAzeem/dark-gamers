@@ -32,7 +32,7 @@
             <a href="#features">Features</a>
             <a href="#dashboard">Dashboard</a>
         </nav>
-        <button class="cta-btn magnetic-btn">Get Started</button>
+        <button id="getStartedBtn" class="cta-btn magnetic-btn">Get Started</button>
     </header>
 
     <!-- Main Content Wrapper for Lenis Smooth Scrolling -->
@@ -43,9 +43,11 @@
             <div class="hero-content">
                 <h1 class="hero-title">System <span class="neon-text">Override.</span></h1>
                 <p class="hero-subtitle">Access the ultimate database of cheat codes, exploits, and system overrides.</p>
+                <p class="hero-subtitle">Open the bot and ask for cheats to get instant recommendations.</p>
                 <div class="hero-buttons">
-                    <button class="primary-btn glow-btn">Access Database</button>
-                    <button class="secondary-btn glass-btn">Join Syndicate</button>
+                    <button id="accessDatabaseBtn" class="primary-btn glow-btn">Access Database</button>
+                    <button id="joinSyndicateBtn" class="secondary-btn glass-btn">Join Syndicate</button>
+                    <button id="openBotBtn" class="secondary-btn glass-btn">Open Bot</button>
                 </div>
             </div>
             <!-- Container for the 3D Rotating Earth -->
@@ -146,6 +148,14 @@
                     <div class="card-icon"><i class="fa-solid fa-list-check"></i></div>
                     <h3>Command Queue</h3>
                     <p>Queue cheat commands, schedule injections, and execute complex cheat workflows automatically.</p>
+                </div>
+            </div>
+
+            <div class="feature-modal" id="featureModal" aria-hidden="true">
+                <div class="feature-modal-content">
+                    <button class="modal-close" id="featureModalClose">&times;</button>
+                    <h3 id="featureModalTitle">Feature Detail</h3>
+                    <p id="featureModalDescription">Select a feature card to see more information here.</p>
                 </div>
             </div>
         </section>

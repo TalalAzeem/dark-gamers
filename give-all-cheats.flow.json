@@ -1,0 +1,189 @@
+{
+  "version": "0.1",
+  "flow": "give-all-cheats.flow.json",
+  "startNode": "entry",
+  "nodes": [
+    {
+      "id": "entry",
+      "name": "entry",
+      "type": "standard",
+      "onEnter": [
+        "say(`📋 Here are **ALL cheats** for **${user.gameName}**:`)"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "user.gameName.toLowerCase().includes('gta') && user.gameName.toLowerCase().includes('v') || user.gameName.toLowerCase().includes('gta5') || user.gameName.toLowerCase().includes('gta 5')",
+          "node": "cheats-gta5"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('minecraft')",
+          "node": "cheats-minecraft"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('red dead') || user.gameName.toLowerCase().includes('rdr2') || user.gameName.toLowerCase().includes('rdr')",
+          "node": "cheats-rdr2"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('sims') && (user.gameName.toLowerCase().includes('4') || user.gameName.toLowerCase().includes('four'))",
+          "node": "cheats-sims4"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('gta') && (user.gameName.toLowerCase().includes('san andreas') || user.gameName.toLowerCase().includes('sa'))",
+          "node": "cheats-gtasa"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('cyberpunk')",
+          "node": "cheats-cyberpunk"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('ark')",
+          "node": "cheats-ark"
+        },
+        {
+          "condition": "user.gameName.toLowerCase().includes('payday')",
+          "node": "cheats-payday"
+        },
+        {
+          "condition": "true",
+          "node": "cheats-ai-fallback"
+        }
+      ]
+    },
+    {
+      "id": "cheats-gta5",
+      "name": "cheats-gta5",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🏙️ **GTA V – ALL CHEATS (PS/Xbox/PC)**\\n\\n**💰 MONEY / STATS:**\\n• Lower Wanted Level – LAWYERUP / RB, RB, B, RT, Right, Left, Right, Left\\n• Raise Wanted Level – FUGITIVE / RB, RB, B, RT, Left, Right, Left, Right\\n• Infinite Health – TURTLE / B, LB, Y, RT, A, X, B, Right, X, LB, LB, LB\\n• Explosive Ammo – HIGHEX / Right, X, A, Left, RB, RT, Left, Right, Right, LB, LB, LB\\n• Fast Run – CATCHME / Y, Left, Right, Right, LT, LB, X\\n• Super Jump – HOPTOIT / Left, Left, Y, Y, Right, Right, Left, Right, X, RB, RT\\n• Drunk Mode – LIQUOR / Y, Right, Right, Left, Right, X, B, Left\\n\\n**🔫 WEAPONS:**\\n• All Weapons – TOOLUP / Y, RT, Left, LB, A, Right, Y, Down, X, LB, LB, LB\\n\\n**🚗 VEHICLES:**\\n• Spawn BMX – BANDIT / Left, Left, Right, Right, Left, Right, X, B, Y, RB, RT\\n• Spawn Buzzard Helicopter – BUZZOFF / B, B, LB, B, B, B, LB, LT, RB, Y, B, Y\\n• Spawn Comet – COMET / RB, B, RT, Right, LB, LT, A, A, X, RB\\n• Spawn Rapid GT – RAPIDGT / RT, LB, B, Right, LB, RB, Right, Left, B, RT\\n• Spawn Trashmaster – TRASHED / B, RB, B, RB, Left, Left, RB, LB, B, Right\\n• Spawn PCJ-600 – ROCKET / RB, Right, Left, Right, RT, Left, Right, X, Right, LT, LB, LB\\n• Spawn Sanchez – OFFROAD / B, A, LB, B, B, LB, B, RB, RT, LT, LB, LB\\n• Spawn Duster – FLYSPRAY / Right, Left, RB, RB, RB, Left, Y, Y, A, B, LB, LB\\n• Spawn Stunt Plane – BARNSTORM / B, Right, LB, LT, Left, RB, LB, LB, Left, Left, A, Y\\n• Spawn Caddy – HOLEIN1 / B, LB, Left, RB, LT, A, RB, LB, B, A\\n\\n**🌦️ EFFECTS:**\\n• Moon Gravity – FLOATER / Left, Left, LB, RB, LB, Right, Left, LB, Left\\n• Slippery Cars – SNOWDAY / Y, RB, RB, Left, RB, LB, RT, LB\\n• Slow Motion – SLOWMO / Y, Left, Right, Right, X, RT, RB\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cheats-minecraft",
+      "name": "cheats-minecraft",
+      "type": "standard",
+      "onEnter": [
+        "say(\"⛏️ **Minecraft – ALL COMMANDS/CHEATS**\\n\\n**💊 HEALTH & SURVIVAL:**\\n• /gamemode creative – Unlimited resources, fly, no damage\\n• /gamemode survival – Normal gameplay\\n• /gamemode spectator – Fly through walls invisibly\\n• /kill – Kill yourself (or other entity)\\n• /effect give @s minecraft:regeneration 9999 255 – Infinite health regen\\n• /effect give @s minecraft:saturation 9999 255 – Never get hungry\\n• /effect give @s minecraft:fire_resistance 9999 255 – Immune to fire\\n• /effect give @s minecraft:water_breathing 9999 255 – Breathe underwater\\n• /effect give @s minecraft:night_vision 9999 255 – See in the dark\\n\\n**🔫 ITEMS & INVENTORY:**\\n• /give @s diamond_sword 64 – Give yourself items\\n• /give @s netherite_armor – Best armor\\n• /give @s enchanted_golden_apple 64 – God apples\\n• /enchant @s sharpness 5 – Max enchant held item\\n\\n**🌍 WORLD:**\\n• /tp [x] [y] [z] – Teleport to coordinates\\n• /tp @s @p – Teleport to nearest player\\n• /time set day – Set time to day\\n• /time set night – Set time to night\\n• /weather clear – Clear weather\\n• /weather rain – Start rain\\n• /weather thunder – Thunderstorm\\n• /seed – Show world seed\\n\\n**⚙️ MISC:**\\n• /xp add @s 99999 levels – Add XP levels\\n• /summon minecraft:wither – Summon a Wither\\n• /summon minecraft:ender_dragon – Spawn Ender Dragon\\n• /fill ~-10 ~-1 ~-10 ~10 ~-1 ~10 diamond_block – Fill area with diamonds\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cheats-rdr2",
+      "name": "cheats-rdr2",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🤠 **Red Dead Redemption 2 – ALL CHEATS**\\n*(Press Triangle/Y to open cheat menu, go to Settings > Cheats, then enter phrases)*\\n\\n**💊 HEALTH / DEAD EYE:**\\n• 'ABUNDANCE IS THE DULLEST DESIRE' – Infinite Ammo\\n• 'YOU FLOURISH BEFORE YOU DIE' – Full Health, Stamina & Dead Eye\\n• 'I SHALL BE BETTER' – Restore Health\\n• 'FOCUS' – Refill Dead Eye\\n• 'SEEK SEEK LEST' – Eagle Eye always active\\n\\n**💰 MONEY & HONOR:**\\n• 'GREED IS NOW A VIRTUE' – Add $500\\n• 'BALANCE. ALL IS BALANCE' – Set Honor to max\\n• 'YOU ROGUE, YOU DEVIL' – Decrease Honor\\n• 'VIRTUE UNEARNED IS NOT VIRTUE' – High Honor\\n\\n**🚗 HORSES & VEHICLES:**\\n• 'BETTER THAN MY DOG' – Summon horse\\n• 'RUN! RUN! RUN!' – Superior Horse\\n• 'KEEP YOUR DREAMS SIMPLE' – Wagon spawn\\n\\n**🔫 WEAPONS:**\\n• 'A SIMPLE LIFE, A BEAUTIFUL DEATH' – All Weapons\\n• 'GREED IS AMERICAN VIRTUE' – Heavy Weapons\\n• 'History Is Written By Fools' – All Melee Weapons\\n\\n**🌍 WORLD:**\\n• 'EVERYBODY IS STUPID EXCEPT ME' – Wanted Level Removed\\n• 'YOU WANT PUNISHMENT' – Raise Wanted Level\\n• 'VANITY. ALL IS VANITY' – Heavy Fog\\n• 'DEAD MAN TELLS NO TALES' – Drunk Mode\\n• 'YOU SEEK MORE THAN THE WORLD OFFERS' – Set Time\\n• 'THE LUCK OF THE DRAW' – Random Character Set\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cheats-sims4",
+      "name": "cheats-sims4",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🏠 **The Sims 4 – ALL CHEATS**\\n*(Press Ctrl+Shift+C to open cheat console)*\\n\\n**💰 MONEY:**\\n• motherlode – Add §50,000\\n• kaching or rosebud – Add §1,000\\n• Money [amount] – Set exact money (e.g. Money 9999999)\\n• FreeRealEstate on – Buy any house for free\\n\\n**💊 NEEDS & SKILLS:**\\n• testingcheats true – Enable all cheats (required first!)\\n• fillmotive motive_Hunger – Fill hunger bar\\n• fillmotive motive_Energy – Fill energy bar\\n• fillmotive motive_Fun – Fill fun bar\\n• fillmotive motive_Social – Fill social bar\\n• fillmotive motive_Bladder – Fill bladder\\n• sims.fill_all_commodities – Max all needs\\n• stats.set_skill_level Major_Cooking 10 – Max a skill\\n• stats.set_skill_level Major_Painting 10 – Max painting\\n• stats.set_skill_level Skill_Fitness 10 – Max fitness\\n• careers.add_career [career name] – Add career\\n\\n**👤 SIM CONTROL:**\\n• sims.add_buff e_buff_Energized – Add energized moodlet\\n• sims.add_buff Social_Happy – Happy moodlet\\n• traits.equip_trait [trait name] – Add a trait\\n• traits.remove_trait [trait name] – Remove trait\\n• sims.spawn – Spawn a new Sim\\n• aging off – Disable aging\\n\\n**🏗️ BUILD MODE:**\\n• bb.moveobjects on – Place objects anywhere\\n• bb.enablefreebuild – Build on any lot\\n• bb.showhiddenobjects – Unlock debug items\\n• bb.showliveeditobjects – More hidden items\\n• bb.ignoregameplayunlocksentitlement – All items unlocked\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cheats-gtasa",
+      "name": "cheats-gtasa",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🚗 **GTA San Andreas – ALL CHEATS (PC)**\\n\\n**💊 HEALTH / WANTED:**\\n• HESOYAM – Health, Armor & $250k\\n• BAGUVIX – Infinite Health\\n• FULLCLIP – Infinite Ammo\\n• AEZAKMI – Never Wanted\\n• TURNUPTHEHEAT – 6-Star Wanted Level\\n• TURNDOWNTHEHEAT – Clear Wanted Level\\n• IOJUFZN – Riot Mode\\n\\n**🔫 WEAPONS:**\\n• LXGIWYL – Weapon Set 1 (Desert Eagle, etc.)\\n• PROFESSIONALSKIT – Weapon Set 2 (TEC-9, etc.)\\n• UZUMYMW – Weapon Set 3 (Minigun, etc.)\\n\\n**🚗 VEHICLES:**\\n• ROCKETMAN – Get Jetpack\\n• AIYPWZQP – Get Parachute\\n• CPKTNWT – All Cars Explode\\n• XICWMD – Invisible Car\\n• WHEELSONLYPLEASE – Invisible Cars (wheels only)\\n• STICKLIKEGLUE – Perfect Traction\\n• FLYINGFISH – Cars Fly\\n• JCNRUAD – Driveable Boat\\n• JUMPJET – Get Hydra Fighter Jet\\n• KGGGDKP – Get Skimmer Plane\\n\\n**🌍 WORLD:**\\n• CFVFGMJ – Sunny Weather\\n• YFCRTLH – Foggy Weather\\n• ICIKPYH – Stormy Weather\\n• AFZLLQLL – Rural Areas\\n• YLTEICZ – Pedestrians Riot\\n• BGKGTJH – Gang Members Everywhere\\n• CIKGCGX – Pedestrians Have Weapons\\n\\n**💪 PLAYER:**\\n• AEDUWNV – Never Hungry\\n• BUFFMEUP – Max Muscle\\n• KVGYZQK – Max Fat\\n• VKYPQCF – Max Respect\\n• EHIBXQS – Max Sex Appeal\\n• VQIMAHA – Max All Stats\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cheats-cyberpunk",
+      "name": "cheats-cyberpunk",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🤖 **Cyberpunk 2077 – ALL CHEATS (PC Console)**\\n*(Requires Cyber Engine Tweaks mod for PC)*\\n\\n**💰 MONEY:**\\n• Game.AddToInventory('Items.money', 99999) – Add eddies\\n\\n**💊 STATS:**\\n• player.SetStatDEV(50) – Max Development\\n• Game.GetPlayer():SetWarningTime(0) – Remove wanted timer\\n\\n**🔫 WEAPONS:**\\n• Game.AddToInventory('Items.Preset_Achilles_Default') – Add Achilles\\n• Game.AddToInventory('Items.Preset_Nova_Default') – Add Nova\\n• Game.AddToInventory('Items.Preset_Lexington_Default') – Add Malorian\\n\\n**📦 ITEMS:**\\n• Game.AddToInventory('Items.HealthInhaler', 50) – Add MaxDocs\\n• Game.AddToInventory('Items.Preset_Dex_Defender') – Dex's gun\\n\\n**⚙️ GENERAL (Xbox/PS – Patch):**\\n• No native console cheats on console; use mods on PC\\n• Consider Cheat Engine tables for offline play\\n\\n*Note: Always back up saves before using cheats!*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cheats-ark",
+      "name": "cheats-ark",
+      "type": "standard",
+      "onEnter": [
+        "say(\"🦕 **ARK: Survival Evolved – ALL CHEATS**\\n*(Press Tab to open console, type 'enablecheats [password]' on servers)*\\n\\n**💊 PLAYER:**\\n• god – God mode (no damage)\\n• fly – Fly mode\\n• walk – Disable fly\\n• ghost – No clip (walk through walls)\\n• InfiniteStats – Infinite health/stamina/food/water\\n• addexperience 99999 0 0 – Add XP\\n• LevelUp [stat number] – Level up a stat\\n\\n**🦖 DINOS:**\\n• GiveEngrams – All Engrams\\n• GiveEngramsTekOnly – All Tek Engrams\\n• Summon [dino classname] – Spawn dino\\n• GMSummon '[DinoName]_Character_BP_C' [level] – Tame spawn\\n• ForceTame – Instant tame targeted dino\\n• DoCropGrowthInstant – Instant crop growth\\n\\n**🔧 ITEMS:**\\n• GiveItemNum [id] [qty] [quality] 0 – Spawn item by ID\\n• GiveResources – Add 50 of all resources\\n• GiveAllStructure – Get all structures\\n• GiveColors [qty] – Get all dyes\\n\\n**🌍 WORLD:**\\n• setweather [weather] – Change weather\\n• r.shadowquality 0 – Boost performance\\n• ToggleDamageNumbers – Show damage numbers\\n• cheat destroywilddinos – Respawn all wild dinos\\n• cheat saveworld – Save the world state\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cheats-payday",
+      "name": "cheats-payday",
+      "type": "standard",
+      "onEnter": [
+        "say(\"💰 **Payday 2 – ALL CHEATS**\\n*(Requires Cheat Engine or mods on PC; no built-in console)*\\n\\n**VIA CHEAT ENGINE:**\\n• Infinite Health – Edit HP process value\\n• Infinite Ammo – Freeze ammo value\\n• Infinite Cable Ties – Freeze item count\\n• Instant Skill Trees – Edit skill points value\\n\\n**TRAINER (Third-Party):**\\n• God Mode\\n• Unlimited Throwables\\n• One-Hit Kill\\n• No Reload\\n• Unlimited Skill Points\\n• Max Cash\\n• No Wanted Level\\n\\n*Note: Cheats may only work in offline / solo mode. Online use risks bans.*\")"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    },
+    {
+      "id": "cheats-ai-fallback",
+      "name": "cheats-ai-fallback",
+      "type": "standard",
+      "onEnter": [
+        "say(`⚠️ I don't have a pre-built cheat list for **${user.gameName}** yet, but here are tips to find them:\\n\\n🔍 **Best sources:**\\n• **IGN Cheats** – ign.com/wikis\\n• **GamesRadar** – gamesradar.com/cheats\\n• **CheatCC** – cheatcc.com\\n• **Cheat Engine** – cheatengine.org (PC games)\\n• **Nexus Mods** – nexusmods.com (for mod-based cheats)\\n\\nType the name of a **more specific platform or version** (e.g. *'GTA V PS4'* or *'GTA San Andreas PC'*) and I'll try to match it better! 🎮`)"
+      ],
+      "onReceive": null,
+      "next": [
+        {
+          "condition": "true",
+          "node": "#exit"
+        }
+      ]
+    }
+  ]
+}

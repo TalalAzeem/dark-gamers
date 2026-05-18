@@ -1,0 +1,12 @@
+{
+  "name": "games-cheats",
+  "version": "1.0.0",
+  "description": "Backend server for Gamer Cheats web app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.4"
+  }
+}

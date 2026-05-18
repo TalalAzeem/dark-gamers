@@ -142,8 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Reveal Hero Title words stagger
       .from('.hero-title', { y: 50, opacity: 0, duration: 1, ease: 'power3.out' }, '-=0.5')
       .from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-      .from('.hero-buttons button', { y: 20, opacity: 0, duration: 0.6, stagger: 0.2, ease: 'power2.out' }, '-=0.4')
-      .from('.hud', { opacity: 0, duration: 1, stagger: 0.3 }, '-=0.5');
+      .from('.hero-buttons button', { y: 20, opacity: 0, duration: 0.6, stagger: 0.2, ease: 'power2.out', immediateRender: false }, '-=0.4')
+      .from('.hud', { opacity: 0, duration: 1, stagger: 0.3, immediateRender: false }, '-=0.5');
 
     // Number counter animation for CO2 saved
     gsap.to('#hero-co2-counter', {
@@ -166,7 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         y: 50,
         opacity: 0,
-        duration: 1
+        duration: 1,
+        immediateRender: false
     });
 
     // Stagger reveal feature cards
@@ -179,7 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0,
         duration: 0.8,
         stagger: 0.2, // Delay between each card animating in
-        ease: 'back.out(1.5)' // Gives a slight bounce effect
+        ease: 'back.out(1.5)', // Gives a slight bounce effect
+        immediateRender: false
     });
 
     // Dashboard reveal
@@ -192,8 +194,111 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0,
         duration: 1,
         stagger: 0.3,
-        ease: 'power3.out'
+        ease: 'power3.out',
+        immediateRender: false
     });
+
+    let backendChartData = null;
+
+    async function fetchApi(endpoint) {
+        const response = await fetch(endpoint);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch ${endpoint}: ${response.status}`);
+        }
+        return response.json();
+    }
+
+    async function initializeBackendData() {
+        try {
+            const hero = await fetchApi('/api/hero');
+            const heroCounter = document.getElementById('hero-co2-counter');
+            if (heroCounter && hero.counter !== undefined) {
+                heroCounter.textContent = Number(hero.counter).toLocaleString();
+            }
+
+            const featuresResponse = await fetchApi('/api/features');
+            if (featuresResponse?.features?.length) {
+                const featuresGrid = document.querySelector('.features-grid');
+                if (featuresGrid) {
+                    featuresGrid.innerHTML = featuresResponse.features.map(feature => `
+                        <div class="glass-card feature-card">
+                            <div class="card-icon"><i class="${feature.icon}"></i></div>
+                            <h3>${feature.title}</h3>
+                            <p>${feature.description}</p>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            const dashboardResponse = await fetchApi('/api/dashboard');
+            if (dashboardResponse) {
+                const metricCards = document.querySelectorAll('.metric-card strong');
+                const metricValues = [
+                    dashboardResponse.activeSessions,
+                    dashboardResponse.networkStability,
+                    dashboardResponse.exploitAlerts,
+                ];
+                metricCards.forEach((card, index) => {
+                    if (metricValues[index] !== undefined) {
+                        card.textContent = metricValues[index];
+                    }
+                });
+
+                const cheatFeed = document.querySelector('.cheat-feed ul');
+                if (cheatFeed && Array.isArray(dashboardResponse.cheatStream)) {
+                    cheatFeed.innerHTML = dashboardResponse.cheatStream.map(line => `<li>${line}</li>`).join('');
+                }
+            }
+
+            backendChartData = await fetchApi('/api/chart');
+        } catch (error) {
+            console.warn('Backend initialization failed:', error);
+        }
+    }
+
+    initializeBackendData();
+
+    const featureModal = document.getElementById('featureModal');
+    const featureModalTitle = document.getElementById('featureModalTitle');
+    const featureModalDescription = document.getElementById('featureModalDescription');
+    const featureModalClose = document.getElementById('featureModalClose');
+    const featuresGrid = document.querySelector('.features-grid');
+
+    function showFeatureModal(title, description) {
+        if (!featureModal || !featureModalTitle || !featureModalDescription) return;
+        featureModalTitle.textContent = title;
+        featureModalDescription.textContent = description;
+        featureModal.classList.add('active');
+        featureModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideFeatureModal() {
+        if (!featureModal) return;
+        featureModal.classList.remove('active');
+        featureModal.setAttribute('aria-hidden', 'true');
+    }
+
+    if (featuresGrid) {
+        featuresGrid.addEventListener('click', (event) => {
+            const card = event.target.closest('.feature-card');
+            if (!card) return;
+            const title = card.querySelector('h3')?.textContent || 'Feature';
+            const description = card.querySelector('p')?.textContent || 'No details available.';
+            showFeatureModal(title, description);
+        });
+    }
+
+    if (featureModalClose) {
+        featureModalClose.addEventListener('click', hideFeatureModal);
+    }
+
+    if (featureModal) {
+        featureModal.addEventListener('click', (event) => {
+            if (event.target === featureModal) {
+                hideFeatureModal();
+            }
+        });
+    }
 
     // ==========================================
     // 4. CHART.JS DASHBOARD INITIALIZATION
@@ -207,26 +312,28 @@ document.addEventListener('DOMContentLoaded', () => {
         gradient.addColorStop(0, 'rgba(0, 255, 136, 0.5)'); // Neon green transparent
         gradient.addColorStop(1, 'rgba(0, 255, 136, 0.0)'); // Fade to transparent
 
+        const chartData = backendChartData || {
+            labels: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
+            datasets: [{
+                label: 'Cheat Activation Rate',
+                data: [45, 58, 71, 85, 82, 93, 99],
+                borderColor: '#00f0ff', // Neon cyan line
+                backgroundColor: gradient, // Fill gradient
+                borderWidth: 3,
+                pointBackgroundColor: '#ff008c', // Neon pink points
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#00f0ff',
+                pointRadius: 5,
+                pointHoverRadius: 8,
+                fill: true,
+                tension: 0.36 // Smooth curves
+            }]
+        };
+
         new Chart(ctx, {
             type: 'line',
-            data: {
-                labels: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
-                datasets: [{
-                    label: 'Cheat Activation Rate',
-                    data: [45, 58, 71, 85, 82, 93, 99],
-                    borderColor: '#00f0ff', // Neon cyan line
-                    backgroundColor: gradient, // Fill gradient
-                    borderWidth: 3,
-                    pointBackgroundColor: '#ff008c', // Neon pink points
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#00f0ff',
-                    pointRadius: 5,
-                    pointHoverRadius: 8,
-                    fill: true,
-                    tension: 0.36 // Smooth curves
-                }]
-            },
+            data: chartData,
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
@@ -572,21 +679,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. CHEAT CODE CHATBOT LOGIC
     // ==========================================
     const chatBtn = document.querySelector('.ai-assistant-btn');
+    const openBotBtn = document.getElementById('openBotBtn');
+    const accessDatabaseBtn = document.getElementById('accessDatabaseBtn');
+    const joinSyndicateBtn = document.getElementById('joinSyndicateBtn');
+    const getStartedBtn = document.getElementById('getStartedBtn');
     const chatWindow = document.getElementById('chatWindow');
     const closeChatBtn = document.getElementById('closeChat');
     const chatInput = document.getElementById('chatInput');
     const sendBtn = document.getElementById('sendBtn');
     const chatMessages = document.getElementById('chatMessages');
 
-    // Toggle Chat Window
-    if(chatBtn && chatWindow) {
-        chatBtn.addEventListener('click', () => {
-            chatWindow.classList.toggle('active');
-            if(chatWindow.classList.contains('active')) {
-                chatInput.focus();
-            }
-        });
+    function smoothScrollToElement(id) {
+        const element = document.getElementById(id);
+        if (!element) return;
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
+    // Toggle Chat Window
+    function toggleChatWindow() {
+        if (!chatWindow) return;
+        chatWindow.classList.toggle('active');
+        if (chatWindow.classList.contains('active') && chatInput) {
+            chatInput.focus();
+        }
+    }
+
+    if(chatBtn && chatWindow) {
+        chatBtn.addEventListener('click', toggleChatWindow);
+    }
+
+    if (openBotBtn && chatWindow) {
+        openBotBtn.addEventListener('click', toggleChatWindow);
+    }
+
+    if (accessDatabaseBtn) {
+        accessDatabaseBtn.addEventListener('click', () => smoothScrollToElement('features'));
+    }
+
+    if (joinSyndicateBtn) {
+        joinSyndicateBtn.addEventListener('click', () => smoothScrollToElement('dashboard'));
+    }
+
+    if (getStartedBtn) {
+        getStartedBtn.addEventListener('click', () => smoothScrollToElement('features'));
+    }
+
+    if (closeChatBtn) {
         closeChatBtn.addEventListener('click', () => {
             chatWindow.classList.remove('active');
         });
